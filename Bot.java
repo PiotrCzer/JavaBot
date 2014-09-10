@@ -3,6 +3,8 @@
  *Author@Piotr Cz.
  *Date - 08/10/12
  *Bot.java
+ *A WIP Java bot with the purpose of searching pixel color location on screen
+ *and scanning after finding them if they moved
  */
 
 import java.awt.Dimension;
@@ -55,12 +57,12 @@ public class Bot{
 		            {
 		                if(img.getRGB(x, y) == target.getRGB() )
 		                {
-		                    originalX = x;
-		                    originalY = y;
+		                originalX = x;
+		                originalY = y;
                     		break search;
-						}
-					}
 				}
+			     }
+			}
 
 		//Search for a change in the pixel's location
 		change: for(int x = 0; x < rectangle.getWidth(); x++ )
@@ -69,14 +71,14 @@ public class Bot{
 		            {
 		                if(img.getRGB(x, y) == target.getRGB() )
 		                {
-							if(originalX != x && originalY != y)
-							{
-								robot.mouseMove(x, y);
-								break change;
-							}
+					if(originalX != x && originalY != y)
+						{
+						robot.mouseMove(x, y);
+						break change;
 						}
 					}
 				}
+			}
 
 		//Command the robot to do the job(Placeholder)
 
